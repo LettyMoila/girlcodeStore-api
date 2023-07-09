@@ -15,10 +15,10 @@ class db:
         self.table = table
         self.pool = conn_pool
 
-    def select(self):
+    def select(self, condition=None):
         conn = self.pool.getconn()
         cursor = conn.cursor()
 
-        cursor.execute(f'SELECT * FROM {self.table} ORDER BY id ASC')
+        cursor.execute(f'SELECT * FROM {self.table} {condition} ORDER BY id ASC')
 
         return cursor.fetchall()
