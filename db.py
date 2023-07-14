@@ -33,3 +33,9 @@ class db:
         conn.close()
 
         return rows
+    
+    def insert(self, columns, values):
+        conn = self.pool.getconn()
+        cursor = conn.cursor()
+
+        sql = f''
