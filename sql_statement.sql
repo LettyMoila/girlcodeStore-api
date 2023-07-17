@@ -53,3 +53,16 @@ SELECT * FROM categories_products
 FULL OUTER JOIN categories on categories_products.cat_id=categories.id
 FULL OUTER JOIN products on categories_products.prod_id=products.id
 WHERE categories.slug='tech'
+
+CREATE TABLE client (
+	id SERIAL PRIMARY KEY,
+	fullname TEXT NOT NULL,
+	emailaddress TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE cart (
+	id SERIAL PRIMARY KEY,
+	cart_content JSONB NOT NULL,
+	client_id INT NOT NULL,
+	FOREIGN KEY(client_id) REFERENCES client(id)
+);
